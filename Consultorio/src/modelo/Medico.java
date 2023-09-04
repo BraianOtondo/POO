@@ -36,6 +36,6 @@ public class Medico {
 		//imc = peso/estatura2
 	return (float) (paciente.getPeso()/Math.pow(paciente.getEstatura(),2));
 	}
-	
+
 	
 }	
