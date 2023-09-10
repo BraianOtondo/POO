@@ -62,12 +62,14 @@ public class Incaa {
 		}
 		return retorno;
 	}
-	public void modificarPelicula (int idPelicula, String pelicula) {
+	public boolean modificarPelicula (int idPelicula, String pelicula) {
+		boolean retorno=false;
 		Pelicula aux=this.traerPelicula(idPelicula);
 		if(aux!=null) {
 			aux.setPelicula(pelicula);
+			retorno=true;
 		}
-		
+		return retorno;
 	}
 	public boolean eliminarPelicula (int idPelicula) {
 		boolean retorno=false;
