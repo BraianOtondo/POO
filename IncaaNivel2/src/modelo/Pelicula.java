@@ -8,7 +8,7 @@ public class Pelicula {
 	public Pelicula(int idPelicula, String pelicula, Genero genero) {
 		super();
 		this.idPelicula = idPelicula;
-		this.pelicula = pelicula;
+		this.setPelicula(pelicula);
 		this.genero = genero;
 	}
 	public int getIdPelicula() {
@@ -21,7 +21,9 @@ public class Pelicula {
 		return pelicula;
 	}
 	public void setPelicula(String pelicula) {
-		this.pelicula = pelicula;
+		if(!pelicula.equals("")){
+			this.pelicula = pelicula;
+		}
 	}
 	public Genero getGenero() {
 		return genero;

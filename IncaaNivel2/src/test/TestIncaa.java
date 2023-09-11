@@ -13,19 +13,43 @@ public class TestIncaa {
 		Genero genero4= new Genero(4,"Comedia");
 		
 		Incaa incaa=new Incaa();
+		try {
+			System.out.println(incaa.agregarPelicula("La Momia", genero3));
+			System.out.println(incaa.agregarPelicula("MAD", genero4));
+			System.out.println(incaa.agregarPelicula("La bruja de Blair", genero1));
+			System.out.println(incaa.agregarPelicula("RocaLoca", genero2));
+			System.out.println(incaa.agregarPelicula("La Monja", genero1));
+			System.out.println(incaa.agregarPelicula("Jeff the Killer", genero1));
+			System.out.println(incaa.agregarPelicula("RocaLoca", genero4));
+
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
 		
-		System.out.println(incaa.agregarPelicula("La Momia", genero3));
-		System.out.println(incaa.agregarPelicula("MAD", genero4));
-		System.out.println(incaa.agregarPelicula("La bruja de Blair", genero1));
-		System.out.println(incaa.agregarPelicula("RocaLoca", genero2));	
-		
+		try {
+			System.out.println(incaa.modificarPelicula(4,"Jumanji"));
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
 		System.out.println(incaa);
 		
-		System.out.println(incaa.eliminarPelicula(3));
+		//System.out.println(incaa.eliminarPelicula(3));
 		
 		System.out.println("Nuevas Peliculas: ");
+		try {
+			System.out.println(incaa.eliminarPelicula(4));
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		System.out.println(incaa);
+		//LISTA
+		System.out.println("Lista de un genero: ");
 		
-		 System.out.println(incaa);
+		System.out.println(incaa.traerPelicula(genero1));
 	}
 
 }

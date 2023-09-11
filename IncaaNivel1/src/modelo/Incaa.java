@@ -52,33 +52,40 @@ public class Incaa {
 		}
 		return mayor;
 	}
-	public boolean agregarPelicula (String pelicula) {
+	// Si la película existe en la lista lanzar la excepción
+	public boolean agregarPelicula (String pelicula) throws Exception{
+		
 		Pelicula aux =this.traerPelicula(pelicula);
-		boolean retorno=false;
-		if(aux==null) {
-			retorno=true;
-			aux= new Pelicula(this.traerUltimoID()+1,pelicula );
-			this.catalogo.add(aux);
+		if(aux!=null) {
+			throw new Exception("La pelicula :"+pelicula+" ya existe");
 		}
-		return retorno;
+		
+		aux= new Pelicula(this.traerUltimoID()+1,pelicula );
+		return  this.catalogo.add(aux);		
 	}
-	public boolean modificarPelicula (int idPelicula, String pelicula) {
-		boolean retorno=false;
+	//Modificar la película traerPelicula por id, si no existe la película lanzar la excepción, de lo
+	//contrario setPelicula con el parámetro pelicula
+	public boolean modificarPelicula (int idPelicula, String pelicula) throws Exception{
+		
 		Pelicula aux=this.traerPelicula(idPelicula);
-		if(aux!=null) {
-			aux.setPelicula(pelicula);
-			retorno=true;
+		if(aux==null) {
+		throw new Exception("La pelicula con Id : "+idPelicula+" no existe");
 		}
-		return retorno;
+		aux.setPelicula(pelicula);
+
+		return true;
 	}
-	public boolean eliminarPelicula (int idPelicula) {
-		boolean retorno=false;
+	//Eliminar la película: traerPelicula por su id, si no existe la película lanzar la excepción, de lo
+	//contrario eliminar el elemento de la lista (remove)
+	public boolean eliminarPelicula (int idPelicula)throws Exception {
+		
 		Pelicula aux=traerPelicula(idPelicula);
-		if(aux!=null) {
-			retorno=true;
-			this.catalogo.remove(aux);
+		if(aux==null) {
+			throw new Exception("La pelicula con Id: "+idPelicula+" no existe");
 		}
-		return retorno;
+		
+		return this.catalogo.remove(aux);
+		
 	}
 	
 	

@@ -48,33 +48,29 @@ public class Incaa {
 		}
 		return ultimo;
 	}
-	public boolean agregarPelicula (String pelicula, Genero genero) {
+	public boolean agregarPelicula (String pelicula, Genero genero)throws Exception {
 		Pelicula aux=traerPelicula(pelicula);
-		boolean retorno=false;
+		if(aux!=null) {
+		throw new Exception("La pelicula: "+pelicula+" ya existe");
+		}
+		return this.catalogo.add(new Pelicula(this.traerUltimoId()+1, pelicula,genero));
+	}
+	
+	public boolean modificarPelicula (int idPelicula, String pelicula)throws Exception{
+		Pelicula aux=this.traerPelicula(idPelicula);
 		if(aux==null) {
-			
-			this.catalogo.add(new Pelicula(this.traerUltimoId()+1, pelicula,genero));
-			retorno=true;
+			throw new Exception("La pelicula con Id: "+idPelicula+" no existe");
 		}
-		return retorno;
+		aux.setPelicula(pelicula);
+		return true;
 	}
-	public boolean modificarPelicula (int idPelicula, String pelicula) {
+	public boolean eliminarPelicula (int idPelicula) throws Exception{
+		
 		Pelicula aux=this.traerPelicula(idPelicula);
-		boolean retorno=false;
-		if(aux!=null) {
-			aux.setPelicula(pelicula);
-			retorno=true;
+		if(aux==null) {
+			throw new Exception("La pelicula con Id: "+idPelicula+" no existe");
 		}
-		return retorno;
-	}
-	public boolean eliminarPelicula (int idPelicula) {
-		boolean retorno=false;
-		Pelicula aux=this.traerPelicula(idPelicula);
-		if(aux!=null) {
-			this.catalogo.remove(aux);
-			retorno=true;
-		}
-		return retorno;
+		return this.catalogo.remove(aux);
 	}
 	public List<Pelicula> traerPelicula(Genero genero){
 		List<Pelicula> lista = new ArrayList<Pelicula>();
