@@ -8,9 +8,11 @@ import java.util.List;
 public class Supermercado {
 	private List<Producto> gondola;
 	private List<Carrito> lstCarrito;
+	private List<Cliente> lstCliente;
 	public Supermercado() {
 		gondola=new ArrayList<Producto>();
 		lstCarrito=new ArrayList<Carrito>();
+		lstCliente=new ArrayList<Cliente>();
 	}
 	public List<Producto> getGondola() {
 		return gondola;
@@ -23,6 +25,13 @@ public class Supermercado {
 	}
 	public void setlstCarrito(List<Carrito> lstCarrito) {
 		this.lstCarrito = lstCarrito;
+	}
+	
+	public List<Cliente> getLstCliente() {
+		return lstCliente;
+	}
+	public void setLstCliente(List<Cliente> lstCliente) {
+		this.lstCliente = lstCliente;
 	}
 	@Override
 	public String toString() {
@@ -121,12 +130,12 @@ public class Supermercado {
 		return carrito;
 	}
 	//Si el carrito existe en la lista levantar una excepción.
-	public boolean agregarCarrito(LocalDate fecha, LocalTime hora)throws Exception{
+	public boolean agregarCarrito(LocalDate fecha, LocalTime hora,Cliente cliente)throws Exception{
 		Carrito objeto=this.traerCarrito(fecha, hora);
 		if(objeto!=null) {
 			throw new Exception("El carrito ya existe");
 		}
-		objeto=new Carrito(this.traerUltimoIDCarrito()+1, fecha, hora);
+		objeto=new Carrito(this.traerUltimoIDCarrito()+1, fecha, hora,cliente);
 	return this.lstCarrito.add(objeto);
 	}
 	private int traerUltimoIDCarrito(){
@@ -145,5 +154,59 @@ public class Supermercado {
 		return this.lstCarrito.remove(carrito);
 	}
 	
-	
+	/*agregarCliente(String cliente, long dni, String direccion): boolean
+	Si el cliente existe en la lista levantar una excepción.
+
+
+	10) +eliminarCliente(int idCliente): boolean
+	Si el cliente no existe o tiene algún carrito se debe levantar una excepción.
+	*/
+	private int traerUltimoIdCliente() {
+		int id=0;
+		if(this.lstCliente.size()!=0) {
+			id=this.lstCliente.get(this.lstCliente.size()-1).getIdCliente();
+			}
+		return id;
+		}
+
+	public Cliente traerCliente(int idCliente) {
+		Cliente encontrado=null;
+		int i=0;
+		while(i<this.lstCliente.size() && encontrado==null) {
+			if(idCliente==this.lstCliente.get(i).getIdCliente()) {
+				encontrado=this.lstCliente.get(i);
+			}
+		}
+		return encontrado;
+	}
+	public Cliente traerCliente(long dni) {
+		Cliente encontrado=null;
+		int i=0;
+		while(i<this.lstCliente.size() && encontrado==null) {
+			if(dni==this.lstCliente.get(i).getDni()) {
+				encontrado=this.lstCliente.get(i);
+			}
+			i++;
+		}
+		return encontrado;
+	}
+	public boolean agregarCliente(String cliente, long dni, String direccion) throws Exception{
+		Cliente objeto=this.traerCliente(dni);
+		if(objeto!=null) {
+			throw new Exception("El cliente : "+cliente+" ya existe");
+		}
+		objeto=new Cliente(this.traerUltimoIdCliente()+1, cliente, dni, direccion);
+		return this.lstCliente.add(objeto);
+	}
+	public float calcularTotal(LocalDate fechaInicio, LocalDate fechaFin) {
+		float total=0;
+		for(int i=0;i<this.lstCarrito.size();i++) {
+			LocalDate fechaVenta=this.lstCarrito.get(i).getFecha();
+			if(fechaVenta.isAfter(fechaInicio)&& fechaVenta.isBefore(fechaFin)) {
+				total=total+this.lstCarrito.get(i).calcularTotal();
+			}
+		}
+		return total;
+	}
+	//calcularTotal(LocalDate fecha): float
 }

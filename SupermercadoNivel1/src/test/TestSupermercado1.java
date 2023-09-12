@@ -36,11 +36,25 @@ public class TestSupermercado1 {
 			System.out.println(e.getMessage());
 		}
 		System.out.println(supermercado.getGondola());
+		//CLIENTES
+		try {
+			System.out.println(supermercado.agregarCliente("Raul",412515,"Rosas 123")+" sdfasfd");
+			System.out.println(supermercado.agregarCliente("Roman Riquelme", 541251,"Ruizzz 415")+"gfasdg");
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		System.out.println("CLIENTES: ");
+		System.out.println(supermercado.getLstCliente());
+		
+		
 		//CARRITOS
 		try {
-			System.out.println(supermercado.agregarCarrito(LocalDate.of(2023, 9, 10),LocalTime.of(10, 40)));
-			System.out.println(supermercado.agregarCarrito(LocalDate.of(2023, 5, 10),LocalTime.of(20, 00)));
-			System.out.println(supermercado.agregarCarrito(LocalDate.of(2023, 10, 20),LocalTime.of(17,30)));
+			System.out.println(supermercado.agregarCarrito(LocalDate.of(2023, 9, 10),LocalTime.of(10, 40),supermercado.getLstCliente().get(0)));
+			System.out.println(supermercado.agregarCarrito(LocalDate.of(2023, 5, 10),LocalTime.of(20, 00),supermercado.getLstCliente().get(0)));
+			System.out.println(supermercado.agregarCarrito(LocalDate.of(2023, 10, 20),LocalTime.of(17,30),supermercado.getLstCliente().get(1)));
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
