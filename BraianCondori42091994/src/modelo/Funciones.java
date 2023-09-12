@@ -187,4 +187,11 @@ public class Funciones {
 	    int numEntero = Integer.parseInt(cadena);
 	    return numEntero;
 	}
+	public int numero(String codigo , int pos) {
+		int num=codigo.charAt(pos);
+		return num;
+	}
+	public boolean esPar(int num) {
+		return num % 2==0;
+	}
 }
