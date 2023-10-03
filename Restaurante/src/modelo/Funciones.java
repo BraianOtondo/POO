@@ -6,7 +6,7 @@ import java.time.LocalTime;
 public class Funciones {
 	private LocalDate fecha;
 	private LocalTime hora;
-
+	
 	public Funciones(LocalDate fecha, LocalTime hora) {
 		super();
 		this.fecha = fecha;
@@ -43,7 +43,7 @@ public class Funciones {
 	public String traerHoraCorta(LocalTime hora) {
 		return hora.getHour() + ":" + hora.getMinute();
 	}
-	// Retorna “hh:mm”
+	// Retorna �hh:mm�
 
 	public LocalDate transformar(String fecha) {
 		return LocalDate.parse(fecha);
@@ -135,20 +135,7 @@ public class Funciones {
 		
 	//}
 	//((anio % 4 == 0 && anio % 100 != 0) || (anio % 100 == 0 && anio % 400 == 0))
-	/*Los meses que tienen 30 días son:
-		Abril
-		Junio
-		Septiembre
-		Noviembre
-		Los meses que tienen 31 días son:
-		Enero
-		Marzo
-		Mayo
-		Julio
-		Agosto
-		Octubre
-		Diciembre
-		En Febrero si el año es bisiesto, tendrá 29 días, sino tendrá 28 días.*/
+	
 	public boolean esNumero(char c){
 		boolean flag=false;
 		switch(c){
@@ -194,4 +181,10 @@ public class Funciones {
 	public boolean esPar(int num) {
 		return num % 2==0;
 	}
+
+	@Override
+	public String toString() {
+		return "Funciones [fecha=" + fecha + ", hora=" + hora + "]";
+	}
+	
 }
