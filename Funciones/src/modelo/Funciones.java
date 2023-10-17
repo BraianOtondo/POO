@@ -8,7 +8,7 @@ import java.time.Period;
 public class Funciones {
 	private LocalDate fecha;
 	private LocalTime hora;
-	//Moto moto= (Moto) vehiculo;
+
 	public Funciones(LocalDate fecha, LocalTime hora) {
 		super();
 		this.fecha = fecha;
@@ -54,6 +54,9 @@ public class Funciones {
 	public static boolean esDiaHabil(LocalDate fecha) {
 		int d = fecha.getDayOfWeek().getValue();
 		return ((d >= 1) && (d <= 5));
+		//Moto moto= (Moto) vehiculo;
+		//Vehiculo vehiculo=this_vehiculos(i)
+		//Moto moto=(Moto) vehiculo;
 	}
 
 	public String traerDiaDeLaSemana(LocalDate fecha) {
