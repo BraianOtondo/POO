@@ -33,25 +33,27 @@ public class Moto extends Vehiculo{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+// las Motos, que si tienen caja se debe contemplar un aumento de 0.03 a la eficienciaMotor
+//(sin modificar el valor del atributo, solo para el calculo del consumo) y si tiene un disenioAerodinamico se contempla 0.05 menos a la eficienciaMotor.
+//El resultado de esa eficienciaMotor ajustada se multiplica por la cantidad de km para calcular el consumo.
+//Tener en cuenta que la misma moto puede tener un dise�oAerodinamico y tener caja, en ese caso se aumenta 0.03 y se disminuye 0.05. 
 	@Override
 	public double calcularConsumo(int km) {
 		
 		// TODO Auto-generated method stub
-// las Motos, que si tienen caja se debe contemplar un aumento de 0.03 a la eficienciaMotor
-//(sin modificar el valor del atributo, solo para el calculo del consumo)
-//y si tiene un disenioAerodinamico se contempla 0.05 menos a la eficienciaMotor.
-//El resultado de esa eficienciaMotor ajustada se multiplica por la cantidad de km para calcular el consumo.
-//Tener en cuenta que la misma moto puede tener un dise�oAerodinamico y tener caja,
-//en ese caso se aumenta 0.03 y se disminuye 0.05. 
 		double aumento=this.eficienciaMotor;
 		if(this.incluyeCaja==true){
-			aumento=this.eficienciaMotor+0.03;
+			aumento=aumento+0.03;
 		}
 		if(this.disenioAerodinamico==true){
-			aumento=this.eficienciaMotor-0.05;
+			aumento=aumento-0.05;
 		}
 		return km*aumento;
+	}
+
+	@Override
+	public String toString() {
+		return "Moto ["+super.toString()+", incluyeCaja=" + incluyeCaja + ", disenioAerodinamico=" + disenioAerodinamico + "]";
 	}
 
 }

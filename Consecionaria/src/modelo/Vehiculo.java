@@ -67,8 +67,8 @@ public abstract class Vehiculo {
 	}
 	@Override
 	public String toString() {
-		return "Vehiculo [idVehiculo=" + idVehiculo + ", marca=" + marca + ", modelo=" + modelo + ", anio=" + anio
-				+ ", cantRuedas=" + cantRuedas + ", eficienciaMotor=" + eficienciaMotor + "]";
+		return "idVehiculo=" + idVehiculo + ", marca=" + marca + ", modelo=" + modelo + ", anio=" + anio
+				+ ", cantRuedas=" + cantRuedas + ", eficienciaMotor=" + eficienciaMotor;
 	}
 	
 	public int aniosAntiguedad() {

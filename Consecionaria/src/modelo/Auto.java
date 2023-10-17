@@ -17,16 +17,15 @@ public class Auto extends Vehiculo{
 	}
 
 	@Override
-	public int aniosAntiguedad() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public double calcularConsumo(int km) {
 		// TODO Auto-generated method stub
 		
 		return  km * this.eficienciaMotor;
 	}
 
+	@Override
+	public String toString() {
+		return "Auto ["+super.toString()+" cantPuertas=" + cantPuertas + "]";
+	}
+	
 }
